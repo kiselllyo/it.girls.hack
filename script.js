@@ -5,7 +5,7 @@
   // Language dictionary
   const i18n = {
     en: {
-      homeQuote: "Volunteering in a women's hackathon offers personal growth, skill development, and meaningful impact.",
+      homeQuote: "IT.GIRLS encourages young women's development in IT field.",
       countdownLabel: "Time until project defense",
       registerBtn: "Register",
       miniTitle: "AIS Hack - Annual event",
@@ -31,7 +31,7 @@
       hoursLabel: "Working hours:"
     },
     kz: {
-      homeQuote: "Әйелдерге арналған хакатонда волонтер болу — жеке өсуге, дағдыларды дамытуға және мәнді әсерге жол ашады.",
+      homeQuote: "IT.GIRLS encourages young women's development in IT field.",
       countdownLabel: "Жоба қорғауына дейінгі уақыт",
       registerBtn: "Тіркелу",
       miniTitle: "AIS Hack - жыл сайынғы шара",
@@ -57,7 +57,7 @@
       hoursLabel: "Жұмыс уақыты:"
     },
     ru: {
-      homeQuote: "Волонтёрство на женском хакатоне даёт личностный рост, развитие навыков и ощущение значимого вклада.",
+      homeQuote: "IT.GIRLS encourages young women's development in IT field.",
       countdownLabel: "Время до защиты проекта",
       registerBtn: "Регистрация",
       miniTitle: "AIS Hack — ежегодное событие",
@@ -177,3 +177,4 @@
   });
 
 })();
+
