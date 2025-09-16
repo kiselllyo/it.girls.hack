@@ -1,164 +1,179 @@
-// --------- Translations (EN / KZ / RU) -----------
-const content = {
-  en: {
-    loaderQuote: "“I code because it's a way to make ideas real. — a woman in tech”",
-    mainQuote: "Empowering young women through technology, creativity and teamwork.",
-    about: `AIS Hack is an annual hackathon organized by Aqbobek International School.
-    
-Goal of the hackathon: IT Girls is an AIS Hackathon designed to empower and support the next generation of women leaders in IT by providing access and opportunities to advance skills such as teamwork, critical thinking, creativity, and programming, creating a community contributing to social issues. IT Girls encourages young women's development in the IT field.`,
-    themeEducation: "Education: projects improving learning and access in Kazakhstan.",
-    themeHealth: "Health: solutions for wellbeing and access to healthcare.",
-    themeSafety: "Safety: ideas that protect and support young women.",
-    countdownLabel: "Time left until project defense:",
-    submitSuccess: "Registration submitted — thank you! You'll get confirmation by email.",
-    submitError: "Submission error. Please try again later."
-  },
-  kz: {
-    loaderQuote: "«Мен код жазамын, өйткені ол идеяларды шындыққа айналдыру жолы.» — IT-саласында әйел",
-    mainQuote: "Технология, шығармашылық және команда арқылы жас қыздарды қолдау.",
-    about: `AIS Hack — бұл Aqbobek International School ұйымдастыруымен өткізілетін жыл сайынғы хакатон.
-    
-Хакатонның мақсаты: IT Girls — жас көшбасшы қыздарды қолдау үшін арналған AIS Hackathon. Бұл іс-шара командалық жұмыс, сыни ойлау, шығармашылық және бағдарламалау дағдыларын дамытуға мүмкіндік береді, сондай-ақ әлеуметтік мәселелерге бағытталған қауымдастық құруға көмектеседі.`,
-    themeEducation: "Білім: Қазақстандағы оқуға және қолжетімділікке арналған шешімдер.",
-    themeHealth: "Денсаулық: әл-ауқат пен медициналық қызметтерге қол жеткізу.",
-    themeSafety: "Қауіпсіздік: жас қыздарды қорғауға бағытталған идеялар.",
-    countdownLabel: "Жобаларды қорғауға дейін қалған уақыт:",
-    submitSuccess: "Тіркелу жіберілді — рақмет! Растау электрондық пошта арқылы келеді.",
-    submitError: "Жіберу қатесі. Кейінірек қайталап көріңіз."
-  },
-  ru: {
-    loaderQuote: "«Я программирую, потому что так идеи становятся реальностью.» — женщина в IT",
-    mainQuote: "Поддерживаем девушек через технологии, творчество и командную работу.",
-    about: `AIS Hack — ежегодный хакатон, организуемый Международной школой Aqbobek.
-    
-Цель хакатона: IT Girls создан для поддержки следующего поколения женщин-лидеров в IT, предоставляя возможности развивать командную работу, критическое мышление, креативность и программирование, а также создавать сообщество, работающее над социально значимыми задачами.`,
-    themeEducation: "Образование: проекты для улучшения обучения и доступа в Казахстане.",
-    themeHealth: "Здоровье: решения для благополучия и доступа к медицине.",
-    themeSafety: "Безопасность: идеи для защиты и поддержки молодых девушек.",
-    countdownLabel: "Осталось до защиты проектов:",
-    submitSuccess: "Регистрация отправлена — спасибо! Подтверждение придёт на почту.",
-    submitError: "Ошибка отправки. Попробуйте позже."
-  }
-};
-
-// initial language
-let lang = 'en';
-
-// elements
-const loader = document.getElementById('loader');
-const loaderQuote = document.getElementById('loader-quote');
-const main = document.getElementById('main');
-const mainQuote = document.getElementById('main-quote');
-const aboutText = document.getElementById('about-text');
-const countdownEl = document.getElementById('countdown-timer');
-const countdownLabel = document.querySelector('.countdown div');
-const form = document.getElementById('reg-form');
-const formStatus = document.getElementById('form-status');
-
-function setLanguage(l){
-  lang = l;
-  // loader & main text
-  loaderQuote.textContent = content[lang].loaderQuote;
-  mainQuote.textContent = content[lang].mainQuote;
-  aboutText.textContent = content[lang].about;
-  countdownLabel.textContent = content[lang].countdownLabel;
-}
-setLanguage(lang);
-
-// language buttons
-document.querySelectorAll('.lang-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    setLanguage(btn.dataset.lang);
-  });
-});
-
-// Simulate loader then show site with typewriter quote animation
-function typeWriter(target, text, delay=40){
-  target.textContent = '';
-  let i=0;
-  const interval = setInterval(()=>{
-    target.textContent += text.charAt(i);
-    i++;
-    if(i>=text.length) clearInterval(interval);
-  }, delay);
-}
-
-// Show loader for 1.4s then reveal (you can increase time if you want)
-setTimeout(()=>{
-  // typewriter inside loader then hide
-  typeWriter(loaderQuote, content[lang].loaderQuote, 35);
-}, 120);
-
-setTimeout(()=>{
-  loader.style.display='none';
-  main.classList.remove('hidden');
-  // typewriter for main quote
-  typeWriter(document.getElementById('main-quote'), content[lang].mainQuote, 28);
-  // fade-in sections
-  document.querySelectorAll('.section, .hero').forEach((s,i)=>{
-    s.style.animation = `fadeIn .6s ease ${i*0.12}s both`;
-  });
-}, 1600);
-
-// Countdown — target 28 Sep 2025 12:00 Asia/Aqtobe
-// NOTE: Aktobe is UTC+5. We compute target UTC time accordingly:
-function getTargetUTC(){
-  // 2025-09-28 12:00 in Aqtobe (UTC+5) -> UTC = 07:00
-  return Date.UTC(2025, 8, 28, 7, 0, 0); // months are 0-indexed: 8 => September
-}
-
-function updateCountdown(){
-  const now = Date.now();
-  const diff = getTargetUTC() - now;
-  if(diff <= 0){
-    countdownEl.textContent = '00d 00h 00m 00s';
-    return;
-  }
-  const d = Math.floor(diff / (1000*60*60*24));
-  const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const s = Math.floor((diff % (1000*60)) / 1000);
-  countdownEl.textContent = `${String(d).padStart(2,'0')}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-// Smooth section buttons
-document.querySelectorAll('.section-btn').forEach(b=>{
-  b.addEventListener('click', ()=> {
-    const target = document.getElementById(b.dataset.target);
-    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-});
-
-// Form submit — POST to backend
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  formStatus.textContent = 'Sending...';
-  const fd = new FormData(form);
-  const payload = {};
-  fd.forEach((v,k)=> payload[k]=v);
-  // add language and timestamp
-  payload.lang = lang;
-  payload.timestamp = new Date().toISOString();
-
-  try{
-    const res = await fetch('/api/register', {
-      method:'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    });
-    if(res.ok){
-      formStatus.textContent = content[lang].submitSuccess;
-      form.reset();
-    } else {
-      const data = await res.json().catch(()=>null);
-      formStatus.textContent = data?.error || content[lang].submitError;
+// script.js
+// Countdown target: 28 September 2025 12:00 (Astana / Kazakhstan time).
+// We'll create date in UTC by building from components and offsetting to +06:00.
+(function(){
+  // Language dictionary
+  const i18n = {
+    en: {
+      homeQuote: "Volunteering in a women's hackathon offers personal growth, skill development, and meaningful impact.",
+      countdownLabel: "Time until project defense",
+      registerBtn: "Register",
+      miniTitle: "AIS Hack - Annual event",
+      miniText: "AIS Hack is an annual hackathon organized by Aqbobek International School.",
+      aboutTitle: "About",
+      goalTitle: "Goal / Purpose",
+      goalText: "IT Girls is an AIS Hackathon designed to empower and support the next generation of women leaders in IT by providing them opportunities to advance teamwork, critical thinking, creativity and programming.",
+      themeTitle: "Theme",
+      themeText: "To be announced — 25 September.",
+      prizesTitle: "Prizes",
+      prizesText: "To be announced on Instagram: @it.girls.ais",
+      datesTitle: "Dates",
+      datesText: "Registration: 18–25 September 2025\nTheme announcement: 25 September 2025\n3 days online development — 28 September: presentations",
+      rulesTitle: "Participation",
+      rule1: "Only girls can participate",
+      rule2: "Ages 14–18 (grades 8–12)",
+      rule3: "Teams of 2–4 people",
+      rule4: "Registration fee: 1500 KZT per person",
+      contactsTitle: "Contacts",
+      addressLabel: "Address:",
+      phoneLabel: "Phone:",
+      instLabel: "Instagram:",
+      hoursLabel: "Working hours:"
+    },
+    kz: {
+      homeQuote: "Әйелдерге арналған хакатонда волонтер болу — жеке өсуге, дағдыларды дамытуға және мәнді әсерге жол ашады.",
+      countdownLabel: "Жоба қорғауына дейінгі уақыт",
+      registerBtn: "Тіркелу",
+      miniTitle: "AIS Hack - жыл сайынғы шара",
+      miniText: "AIS Hack — «Ақбөбек» халықаралық мектебі ұйымдастыратын жыл сайынғы хакатон.",
+      aboutTitle: "Біз туралы",
+      goalTitle: "Мақсаты",
+      goalText: "IT Girls — IT саласындағы келешектегі әйел көшбасшыларын қолдауға және құзыреттілігін арттыруға бағытталған AIS Hackathon.",
+      themeTitle: "Тақырып",
+      themeText: "Тақырып 25 қыркүйекте жарияланады.",
+      prizesTitle: "Жүлделер",
+      prizesText: "Instagram-да жарияланады: @it.girls.ais",
+      datesTitle: "Күндер",
+      datesText: "Тіркеу: 18–25 қыркүйек 2025\nТақырып: 25 қыркүйек 2025\n3 күн — онлайн әзірлеу, 28 қыркүйек — қорғау күні",
+      rulesTitle: "Қатысу шарттары",
+      rule1: "Тек қыздар қатыса алады",
+      rule2: "14–18 жаста (8–12 сынып)",
+      rule3: "Командада 2–4 адам",
+      rule4: "Тіркеу ақысы: 1500 KZT адамға",
+      contactsTitle: "Байланыс",
+      addressLabel: "Мекен-жай:",
+      phoneLabel: "Телефон:",
+      instLabel: "Инстаграм:",
+      hoursLabel: "Жұмыс уақыты:"
+    },
+    ru: {
+      homeQuote: "Волонтёрство на женском хакатоне даёт личностный рост, развитие навыков и ощущение значимого вклада.",
+      countdownLabel: "Время до защиты проекта",
+      registerBtn: "Регистрация",
+      miniTitle: "AIS Hack — ежегодное событие",
+      miniText: "AIS Hack — ежегодный хакатон, организуемый Международной школой Ақбөбек.",
+      aboutTitle: "О нас",
+      goalTitle: "Цель",
+      goalText: "IT Girls — хакатон AIS, направленный на развитие и поддержку будущих женщин-лидеров в IT, предоставляя возможности для командной работы, критического мышления, творчества и программирования.",
+      themeTitle: "Тема",
+      themeText: "Тема будет объявлена 25 сентября.",
+      prizesTitle: "Призы",
+      prizesText: "Будут объявлены в Instagram: @it.girls.ais",
+      datesTitle: "Даты",
+      datesText: "Регистрация: 18–25 сентября 2025\nОбъявление темы: 25 сентября 2025\n3 дня онлайн разработки — 28 сентября: защита проектов",
+      rulesTitle: "Условия участия",
+      rule1: "Участвовать могут только девушки",
+      rule2: "Возраст 14–18 лет (8–12 классы)",
+      rule3: "Команды 2–4 человека",
+      rule4: "Регистрационный взнос: 1500 KZT с человека",
+      contactsTitle: "Контакты",
+      addressLabel: "Адрес:",
+      phoneLabel: "Телефон:",
+      instLabel: "Инстаграм:",
+      hoursLabel: "Часы работы:"
     }
-  } catch(err){
-    formStatus.textContent = content[lang].submitError;
-    console.error(err);
+  };
+
+  // SET LANGUAGE
+  let currentLang = localStorage.getItem('itgirls-lang') || 'en';
+  setLanguage(currentLang);
+
+  // Language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> {
+      const lang = btn.dataset.lang;
+      setLanguage(lang);
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      localStorage.setItem('itgirls-lang', lang);
+    });
+    if(btn.dataset.lang === currentLang) btn.classList.add('active');
+  });
+
+  // Apply translations
+  function setLanguage(lang){
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.dataset.i18n;
+      const text = (i18n[lang] && i18n[lang][key]) ? i18n[lang][key] : '';
+      // preserve line breaks
+      el.innerHTML = text.replace(/\n/g,'<br>');
+    });
   }
-});
+
+  // Countdown
+  const countdownEl = document.getElementById('countdown');
+
+  function updateCountdown(){
+    // Target: 2025-09-28 12:00 (Asia/Almaty/Astana = UTC+6)
+    // Build a date in UTC by subtracting 6 hours
+    const targetLocal = new Date(Date.UTC(2025,8,28,12-6,0,0)); // monthIndex 8 = September
+    const now = new Date();
+    const diff = targetLocal - now;
+    if(diff <= 0){
+      countdownEl.innerText = "00d 00h 00m 00s";
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+    countdownEl.innerText = `${pad(days)}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+  }
+  function pad(n){ return String(n).padStart(2,'0') }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Loader + typing quote animation (English)
+  const loader = document.getElementById('loader');
+  const typingEl = document.getElementById('typing');
+  const fullQuote = "“Code the future — together.” — a young developer";
+  // typing effect
+  let idx = 0;
+  function typeNext(){
+    if(idx <= fullQuote.length){
+      typingEl.textContent = fullQuote.slice(0, idx);
+      idx++;
+      setTimeout(typeNext, 40);
+    } else {
+      // after typing finished, hide loader after short delay
+      setTimeout(()=> {
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'none';
+        setTimeout(()=>loader.remove(),400);
+      }, 600);
+    }
+  }
+  // start typing when DOM ready
+  document.addEventListener('DOMContentLoaded', ()=> {
+    // small delay to let the page paint
+    setTimeout(typeNext, 400);
+  });
+
+  // Small entrance animations for panels when in view
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        ent.target.style.transform = 'none';
+        ent.target.style.opacity = '1';
+        ent.target.style.transition = 'transform 600ms ease, opacity 600ms ease';
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.panel, .card, .hero-quote').forEach(el=>{
+    el.style.transform = 'translateY(12px)';
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+
+})();
