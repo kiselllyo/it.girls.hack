@@ -3,155 +3,136 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>IT.GIRLS.</title>
+  <title>IT.GIRLS AIS Hackathon</title>
 
-  <!-- League Spartan -->
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Fonts: The Seasons (custom) + Roca Two fallback.
+       NOTE: If you have a web font file for "The Seasons", connect it via @font-face in styles.css.
+       I provided good fallbacks so it looks elegant without the exact font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Rokkitt:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- language switch -->
+  <!-- Loading overlay -->
+  <div id="loader" class="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-quote" aria-hidden="true"><span id="typing"></span></div>
+  </div>
+
   <header class="topbar">
-    <div class="logo">IT.GIRLS</div>
-    <div class="lang-switch">
-      <button data-lang="en" class="lang-btn active">EN</button>
-      <button data-lang="kz" class="lang-btn">KZ</button>
-      <button data-lang="ru" class="lang-btn">RU</button>
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="hack-title">IT.GIRLS.</div>
+        <div class="hack-sub">AIS Hackathon</div>
+      </div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="kz">KZ</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
     </div>
   </header>
 
-  <!-- loading overlay with typewriter quote -->
-  <div id="loader" class="loader">
-    <div class="loader-circle"></div>
-    <div class="loader-quote" id="loader-quote"></div>
-  </div>
-
-  <main id="main" class="hidden">
+  <main>
     <!-- Hero / Главная -->
-    <section class="hero section-rects">
-      <div class="rect rect-left" style="background:#4E8EA2"></div>
-      <div class="rect rect-right" style="background:#7BBDE8"></div>
+    <section id="home" class="section hero">
+      <div class="hero-left">
+        <h1 class="headline">IT.GIRLS</h1>
+        <p class="hero-quote" data-i18n="homeQuote">
+          IT.GIRLS encourages young women's development in IT field
+        </p>
 
-      <div class="hero-content">
-        <h1 class="title pink">IT.GIRLS</h1>
-        <p class="quote" id="main-quote"></p>
-
-        <div class="logos-placeholder">
-          <!-- место для логотипов -->
+        <div class="logos">
           <div class="logo-slot">Logo 1</div>
           <div class="logo-slot">Logo 2</div>
           <div class="logo-slot">Logo 3</div>
         </div>
 
-        <div class="countdown" aria-live="polite">
-          <div>Time left until project defense:</div>
-          <div id="countdown-timer" class="timer">—</div>
-          <div class="small">28 September 2025, 12:00 (Aqtobe)</div>
+        <div class="countdown-panel">
+          <div class="countdown-title" data-i18n="countdownLabel">Time until project defense</div>
+          <div id="countdown" class="countdown"></div>
         </div>
 
         <div class="cta-row">
-          <button class="section-btn" data-target="about">About</button>
-          <button class="section-btn" data-target="rules">Participation</button>
-          <button class="section-btn" data-target="register">Register</button>
+          <a class="btn register" id="regBtn" target="_blank"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSdroIeBDI7ntqVXbkl6uZJHbkKf-lYtg6Sk7REDeof8tORifQ/viewform?usp=header"
+             data-i18n="registerBtn">Register</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <h3 data-i18n="miniTitle">AIS Hack - Annual event</h3>
+          <p data-i18n="miniText">AIS Hack — ежегодный хакатон, организуемый Международной школой Ақбөбек.</p>
         </div>
       </div>
     </section>
 
-    <!-- About / О нас -->
-    <section id="about" class="section section-card" >
-      <div class="card-left" style="background:#0A4174"></div>
-      <div class="card-right" style="background:#49769F"></div>
+    <!-- О нас / About -->
+    <section id="about" class="section panel">
+      <div class="panel-inner">
+        <h2 class="panel-title" data-i18n="aboutTitle">About</h2>
 
-      <div class="card-content">
-        <h2 class="section-title pink">About — IT Girls</h2>
-        <h3 class="subtitle">AIS Hackathon</h3>
-
-        <p class="lead" id="about-text"></p>
-
-        <div class="theme-boxes">
-          <div class="theme theme-education">
-            <h4>Education</h4>
-            <p>Education relevance and context in Kazakhstan.</p>
+        <div class="panel-grid">
+          <div class="card">
+            <h3 data-i18n="goalTitle">Goal / Purpose</h3>
+            <p data-i18n="goalText">
+              IT Girls is an AIS Hackathon designed to empower and support the next generation of women leaders in IT
+              by providing them opportunities to advance teamwork, critical thinking, creativity and programming.
+            </p>
           </div>
-          <div class="theme theme-health">
-            <h4>Health</h4>
-            <p>Health relevance and context in Kazakhstan.</p>
-          </div>
-          <div class="theme theme-safety">
-            <h4>Safety</h4>
-            <p>Safety relevance and context in Kazakhstan.</p>
-          </div>
-        </div>
 
-        <div class="info-block">
-          <p><strong>Theme:</strong> "Empowering Women for a Better Future"</p>
-          <p><strong>Dates:</strong> Registration 18–25 September 2025. Theme announced 25 September. 3 days online development. 28 September — project defense.</p>
-          <p><strong>Prizes:</strong> (to be announced)</p>
+          <div class="card">
+            <h3 data-i18n="themeTitle">Theme</h3>
+            <p data-i18n="themeText">To be announced — 25 September.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="prizesTitle">Prizes</h3>
+            <p data-i18n="prizesText">To be announced on Instagram: <span class="ig">@it.girls.ais</span></p>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="datesTitle">Dates</h3>
+            <p data-i18n="datesText">
+              Registration: 18–25 September 2025<br>
+              Theme announcement: 25 September 2025<br>
+              3 days online development — 28 September: project presentations / defence
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Participation conditions -->
-    <section id="rules" class="section section-rects">
-      <div class="rect rect-left" style="background:#6EA2B3"></div>
-      <div class="rect rect-right" style="background:#BDD8E9"></div>
+    <!-- Условия участия -->
+    <section id="rules" class="section panel">
+      <div class="panel-inner">
+        <h2 class="panel-title" data-i18n="rulesTitle">Participation</h2>
+        <div class="rules-list">
+          <p data-i18n="rule1">Only girls can participate</p>
+          <p data-i18n="rule2">Ages 14–18 (grades 8–12)</p>
+          <p data-i18n="rule3">Teams of 2–4 people</p>
+          <p data-i18n="rule4">Registration fee: 1500 KZT per person</p>
+        </div>
+      </div>
+    </section>
 
-      <div class="section-content">
-        <h2 class="section-title pink">Participation</h2>
-        <ul class="rules-list">
-          <li>Only girls aged 14–18 (grades 8–12)</li>
-          <li>Teams: 2–4 people</li>
+    <!-- Контакты -->
+    <section id="contacts" class="section contacts">
+      <div class="contacts-inner">
+        <h2 class="panel-title" data-i18n="contactsTitle">Contacts</h2>
+        <ul class="contacts-list">
+          <li><strong data-i18n="addressLabel">Address:</strong> Aqbobek International School, Aktobe, Kazakhstan</li>
+          <li><strong data-i18n="phoneLabel">Phone:</strong> +7 (708) 559 2784</li>
+          <li><strong data-i18n="instLabel">Instagram:</strong> <span class="ig">it.girls.ais</span></li>
+          <li><strong data-i18n="hoursLabel">Working hours:</strong> Mon–Fri 08:00–18:00</li>
         </ul>
+
+        <div class="footer-note">© 2025. All rights reserved. Made by Asel &amp; Zhibek</div>
       </div>
     </section>
-
-    <!-- Registration -->
-    <section id="register" class="section form-section">
-      <div class="form-rect-left" style="background:#4E8EA2"></div>
-      <div class="form-rect-right" style="background:#7BBDE8"></div>
-
-      <div class="form-content">
-        <h2 class="section-title pink">Registration</h2>
-        <form id="reg-form">
-          <label>Team name*<input name="teamName" required></label>
-          <label>Chosen theme* 
-            <select name="theme" required>
-              <option value="education">Education</option>
-              <option value="health">Health</option>
-              <option value="safety">Safety</option>
-            </select>
-          </label>
-          <label>Team leader* <input name="leader" required></label>
-          <label>Leader contact number* <input name="leaderPhone" required></label>
-          <label>Number of members* <input name="membersCount" type="number" min="2" max="4" required></label>
-
-          <div class="members-block">
-            <label>Members (Full names, class, age, school)* <textarea name="membersInfo" rows="4" required></textarea></label>
-          </div>
-
-          <label><input type="checkbox" name="notRobot" required> Confirm you are not a robot*</label>
-          <label><input type="checkbox" name="agree" required> I agree with the rules and regulations*</label>
-
-          <div class="form-actions">
-            <button type="submit" class="submit-btn">Submit registration</button>
-          </div>
-
-          <div id="form-status" role="status" aria-live="polite"></div>
-        </form>
-
-        <div class="contacts">
-          <h4>Contacts</h4>
-          <p>Address: Aqbobek International School, Aktobe, Kazakhstan</p>
-          <p>Phone: +7 (708) 559 2784</p>
-          <p>Hours: Mon–Fri 8:00–18:00</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div>2025 © All rights reserved — made by Asel and Zhibek</div>
-    </footer>
   </main>
 
   <script src="script.js"></script>
