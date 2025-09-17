@@ -111,12 +111,17 @@ body{
 /* logos */
 .logos{ display:flex; gap:12px; margin-top:18px; }
 .logo-slot{
-  width:84px; height:44px;
+  width:120px; height: auto;
   border-radius:10px;
   background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   display:flex; align-items:center; justify-content:center;
   font-size:12px; color:rgba(255,255,255,0.7);
   border:1px dashed rgba(255,255,255,0.04);
+}
+.logo-slot img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* countdown */
@@ -166,6 +171,16 @@ body{
 .contacts{ margin-top:22px; padding:30px; border-radius:14px; background:linear-gradient(180deg, rgba(139,58,182,0.12), rgba(0,0,0,0.02)) }
 .contacts-list{ list-style:none; padding:0; margin:0; color:var(--muted) }
 .contacts-list li{ margin:8px 0 }
+
+.ig {
+  color:#ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ig:hover {
+  color:#c348b4
+}
 
 /* footer note */
 .footer-note{ margin-top:18px; font-size:13px; color:rgba(255,255,255,0.55) }
