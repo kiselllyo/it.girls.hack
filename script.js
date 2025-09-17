@@ -1,4 +1,4 @@
-// script.js
+ // script.js
 // Countdown target: 28 September 2025 12:00 (Astana / Kazakhstan time).
 // We'll create date in UTC by building from components and offsetting to +06:00.
 (function(){
@@ -16,7 +16,7 @@
       themeTitle: "Theme",
       themeText: "To be announced — 25 September.",
       prizesTitle: "Prizes",
-      prizesText: "To be announced on Instagram: @it.girls.ais",
+      prizesText: "Winners will receive memorable gifts.",
       datesTitle: "Dates",
       datesText: "Registration: 18–25 September 2025\nTheme announcement: 25 September 2025\n3 days online development — 28 September: presentations",
       rulesTitle: "Participation",
@@ -42,7 +42,7 @@
       themeTitle: "Тақырып",
       themeText: "Тақырып 25 қыркүйекте жарияланады.",
       prizesTitle: "Жүлделер",
-      prizesText: "Instagram-да жарияланады: @it.girls.ais",
+      prizesText: "Жеңімпаздар естелік сыйлықтар алады.",
       datesTitle: "Күндер",
       datesText: "Тіркеу: 18–25 қыркүйек 2025\nТақырып: 25 қыркүйек 2025\n3 күн — онлайн әзірлеу, 28 қыркүйек — қорғау күні",
       rulesTitle: "Қатысу шарттары",
@@ -68,7 +68,7 @@
       themeTitle: "Тема",
       themeText: "Тема будет объявлена 25 сентября.",
       prizesTitle: "Призы",
-      prizesText: "Будут объявлены в Instagram: @it.girls.ais",
+      prizesText: "Призеры получат памятные призы.",
       datesTitle: "Даты",
       datesText: "Регистрация: 18–25 сентября 2025\nОбъявление темы: 25 сентября 2025\n3 дня онлайн разработки — 28 сентября: защита проектов",
       rulesTitle: "Условия участия",
@@ -177,4 +177,3 @@
   });
 
 })();
-
