@@ -109,7 +109,7 @@ body{
 }
 
 /* logos */
-.logos{ display:flex; gap:12px; margin-top:18px; }
+.logos{ display:flex; flex-wrap: wrap; gap:12px; margin-top:18px; }
 .logo-slot{
   width:120px; height: auto;
   border-radius:10px;
@@ -223,3 +223,4 @@ body{
   .topbar-inner{ padding:12px }
   .section{ padding:28px 16px }
 }
+
