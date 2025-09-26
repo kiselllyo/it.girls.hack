@@ -1,5 +1,5 @@
  // script.js
-// Countdown target: 28 September 2025 12:00 (Astana / Kazakhstan time).
+// Countdown target: 19 October 2025 12:00 (Astana / Kazakhstan time).
 // We'll create date in UTC by building from components and offsetting to +06:00.
 (function(){
   // Language dictionary
@@ -14,11 +14,11 @@
       goalTitle: "Goal / Purpose",
       goalText: "IT Girls is an AIS Hackathon designed to empower and support the next generation of women leaders in IT by providing them opportunities to advance teamwork, critical thinking, creativity and programming.",
       themeTitle: "Theme",
-      themeText: "To be announced — 25 September.",
+      themeText: "To be announced — 16 October.",
       prizesTitle: "Prizes",
       prizesText: "Winners will receive memorable gifts.",
       datesTitle: "Dates",
-      datesText: "Registration: 18–25 September 2025\nTheme announcement: 25 September 2025\n3 days online development — 28 September: presentations",
+      datesText: "Registration: 18 September–16 October 2025\nTheme announcement: 16 October 2025\n3 days online development (16-18 October)— 19 October: presentations",
       rulesTitle: "Participation",
       rule1: "Only girls can participate",
       rule2: "Ages 14–18 (grades 8–12)",
@@ -40,11 +40,11 @@
       goalTitle: "Мақсаты",
       goalText: "IT Girls — IT саласындағы келешектегі әйел көшбасшыларын қолдауға және құзыреттілігін арттыруға бағытталған AIS Hackathon.",
       themeTitle: "Тақырып",
-      themeText: "Тақырып 25 қыркүйекте жарияланады.",
+      themeText: "Тақырып 16 қазанда жарияланады.",
       prizesTitle: "Жүлделер",
       prizesText: "Жеңімпаздар естелік сыйлықтар алады.",
       datesTitle: "Күндер",
-      datesText: "Тіркеу: 18–25 қыркүйек 2025\nТақырып: 25 қыркүйек 2025\n3 күн — онлайн әзірлеу, 28 қыркүйек — қорғау күні",
+      datesText: "Тіркеу: 18 қыркүйек– 16 қазан 2025\nТақырып: 16 қазан 2025\n3 күн — онлайн әзірлеу (16-18 қазан), 19 қазан — қорғау күні",
       rulesTitle: "Қатысу шарттары",
       rule1: "Тек қыздар қатыса алады",
       rule2: "14–18 жаста (8–12 сынып)",
@@ -66,11 +66,11 @@
       goalTitle: "Цель",
       goalText: "IT Girls — хакатон AIS, направленный на развитие и поддержку будущих женщин-лидеров в IT, предоставляя возможности для командной работы, критического мышления, творчества и программирования.",
       themeTitle: "Тема",
-      themeText: "Тема будет объявлена 25 сентября.",
+      themeText: "Тема будет объявлена 16 октября.",
       prizesTitle: "Призы",
       prizesText: "Призеры получат памятные призы.",
       datesTitle: "Даты",
-      datesText: "Регистрация: 18–25 сентября 2025\nОбъявление темы: 25 сентября 2025\n3 дня онлайн разработки — 28 сентября: защита проектов",
+      datesText: "Регистрация: 18 сентября–16 октября 2025\nОбъявление темы: 16 октября 2025\n3 дня онлайн разработки (16-18 октября) — 19 октября: защита проектов",
       rulesTitle: "Условия участия",
       rule1: "Участвовать могут только девушки",
       rule2: "Возраст 14–18 лет (8–12 классы)",
@@ -177,3 +177,4 @@
   });
 
 })();
+
