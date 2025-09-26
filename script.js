@@ -115,9 +115,9 @@
   const countdownEl = document.getElementById('countdown');
 
   function updateCountdown(){
-    // Target: 2025-09-28 12:00 (Asia/Almaty/Astana = UTC+6)
+    // Target: 2025-10-19 12:00 (Asia/Almaty/Astana = UTC+6)
     // Build a date in UTC by subtracting 6 hours
-    const targetLocal = new Date(Date.UTC(2025,8,28,12-6,0,0)); // monthIndex 8 = September
+    const targetLocal = new Date(Date.UTC(2025,9,19,12-6,0,0)); // monthIndex 9 = October
     const now = new Date();
     const diff = targetLocal - now;
     if(diff <= 0){
@@ -177,4 +177,5 @@
   });
 
 })();
+
 
